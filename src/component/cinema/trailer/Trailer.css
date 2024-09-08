@@ -1,0 +1,15 @@
+.react-player-container {
+    height: 85vh;
+}
+
+.back-button {
+    display: block; /* 让按钮作为块级元素，确保它独占一行 */
+    margin: auto; /* 通过 auto 水平居中 */
+    margin-top: 2px;
+    font-size: 16px;
+    background-color: #007F86; /* 按钮背景色 */
+    color: white; /* 按钮文字颜色 */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
