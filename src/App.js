@@ -21,6 +21,7 @@ import EditProfilePage from './component/profile/EditProfilePage';
 import { ProtectedRoute, AdminRoute } from './service/guard';
 import MovieList from './component/cinema/MovieList';  // 新增
 import Trailer from './component/cinema/trailer/Trailer';
+import Chatbots from './component/chatroom/Chatbots';
 
 function App() {
 
@@ -39,6 +40,7 @@ function App() {
                         <Route path="/find-booking" element={<FindBookingPage />} />
                         <Route path="/chat" element={<ChatRoom />} />
                         <Route path="/cinema" element={<Cinema />} />
+                        <Route path="/chatbots" element={<Chatbots />} />
 
                         {/* 新增电影相关路由 */}
                         <Route path="/movies" element={<MovieList />} />
