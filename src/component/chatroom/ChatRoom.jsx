@@ -1,7 +1,10 @@
 /* eslint-disable react/prop-types */
+// eslint-disable-next-line
 import { User, MessageCircle, Heart, Send, RefreshCcw } from 'lucide-react';
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import MusicPlayer from './MusicPlayer';
+import DarkModeToggle from './DarkModeToggle';
 
 
 const fetchRandomChatbot = async () => {
@@ -282,37 +285,61 @@ function ChatRoom() {
 
     const navigate = useNavigate();
 
+    const [isDarkMode, setIsDarkMode] = useState(false);
+
+    const toggleTheme = () => {
+        setIsDarkMode(!isDarkMode);
+    };
+
     return (
-        <div className="max-w-md mx-auto p-3">
-            <nav className="flex justify-between items-center mb-3">
-                <button className='bg-green-500 rounded-full text-white hover:bg-green-700'>
-                    <User onClick={() => setCurrentScreen("chatbot")} />
-                </button>
-                <button className='text-white' onClick={() => refreshCurrentPage()}>
-                    Chat Room
-                </button>
-                <button className='bg-green-500 rounded-full text-white hover:bg-green-700'>
-                    <MessageCircle onClick={() => setCurrentScreen("matches")} />
-                </button>
-            </nav>
+        <div className={`min-h-screen ${isDarkMode ? 'bg-gray-900 text-white' : 'bg-white text-black'}`}> {/* 确保整个页面的根容器应用深色模式 */}
+            <div className="flex flex-row max-w-screen-lg mx-auto p-3">
 
-            {renderScreen()}
-
-
-            <button
-                onClick={() => navigate('/chatbots')} // 当点击按钮时，跳转到 /chatbots 页面
-                className="text-white p-2 rounded mx-auto block mt-4">
-                View All Chatbots
-            </button>
-
-            {currentChatbot2 && (
-                <div>
-                    <h2>{currentChatbot2.firstName} {currentChatbot2.lastName}</h2>
-                    <p>{currentChatbot2.bio}</p>
-                    <img src={`${currentChatbot2.imageUrl}`} alt={currentChatbot2.firstName} />
+                {/* 深色模式切换区域*/}
+                <div className="w-1/4 p-4"> {/* 固定宽度 1/4 的侧边栏 */}
+                    <DarkModeToggle isDarkMode={isDarkMode} toggleTheme={toggleTheme} />
                 </div>
-            )}
+
+                <div className="flex-1"> {/* 主聊天界面部分 */}
+                    <nav className="flex justify-between items-center mb-3">
+                        <button className='bg-green-500 rounded-full text-white hover:bg-green-700'>
+                            <User onClick={() => setCurrentScreen("chatbot")} />
+                        </button>
+                        <button className='text-white' onClick={() => refreshCurrentPage()}>
+                            Chat Room
+                        </button>
+                        <button className='bg-green-500 rounded-full text-white hover:bg-green-700'>
+                            <MessageCircle onClick={() => setCurrentScreen("matches")} />
+                        </button>
+                    </nav>
+
+
+                    {renderScreen()}
+
+
+
+                    <button
+                        onClick={() => navigate('/chatbots')} // 当点击按钮时，跳转到 /chatbots 页面
+                        className="text-white p-2 rounded mx-auto block mt-4">
+                        View All Chatbots
+                    </button>
+
+                    {currentChatbot2 && (
+                        <div>
+                            <h2>{currentChatbot2.firstName} {currentChatbot2.lastName}</h2>
+                            <p>{currentChatbot2.bio}</p>
+                            <img src={`${currentChatbot2.imageUrl}`} alt={currentChatbot2.firstName} />
+                        </div>
+                    )}
+                </div>
+
+                {/* 音乐播放器区域 */}
+                <div className="w-1/4 p-4"> {/* 固定宽度 1/4 的侧边栏 */}
+                    <MusicPlayer />
+                </div>
+            </div>
         </div>
+
     )
 }
 

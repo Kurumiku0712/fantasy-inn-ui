@@ -48,10 +48,10 @@ function RegisterPage() {
                     password: '',
                     phoneNumber: ''
                 });
-                setSuccessMessage('User registered successfully');
+                setSuccessMessage('User registered successfully! Redirecting to Login...');
                 setTimeout(() => {
                     setSuccessMessage('');
-                    navigate('/');
+                    navigate('/login');
                 }, 3000);
             }
         }
