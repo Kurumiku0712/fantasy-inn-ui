@@ -1,70 +1,125 @@
-# Getting Started with Create React App
+# Fantasy Inn
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Video Link: 
 
-## Available Scripts
+https://drive.google.com/file/d/15vCsdHe3SlKA0T6ZmvEg-KwqPapMK88P/view?usp=sharing
 
-In the project directory, you can run:
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+**Project Overview:**
+The Fantasy Inn is a virtual world enthusiast's immersive booking system that provides AI-driven personalized services, enabling users to interact with virtual characters and enjoy an enhanced virtual world experience. This platform includes modules such as room booking, management, order search, and a cinema feature. It is developed using **Spring Boot** and **React** in a **decoupled front-end and back-end architecture**.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Backend:
 
-### `npm run build`
+[Kurumiku0712/fantasy-inn (github.com)](https://github.com/Kurumiku0712/fantasy-inn)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Frontend:
 
-### `npm run eject`
+[Kurumiku0712/fantasy-inn-ui (github.com)](https://github.com/Kurumiku0712/fantasy-inn-ui)
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Key Features:
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+- **AI-Powered Chatbot:**
+  - Integrated with **Spring AI** and **OpenAI API** to develop an interactive **ChatGPT-based** chatbot. This chatbot automatically generates random names, races, and personalities, enhancing user engagement and fun.
 
-## Learn More
+- **Stable Diffusion Avatar Creation:**
+  - Using model files from **civitai** and deploying **Stable Diffusion**, the system generates stylized character portraits based on chatbot profiles to enhance the interactive experience.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- **Database Migration:**
+  - The database was migrated from **MySQL** to **MongoDB** to improve the system’s **data processing efficiency**
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- **Google reCAPTCHA Integration:**
+  - **Google reCAPTCHA** is used to collect user behavior data and prevent automated attacks, enhancing the platform's **security**.
 
-### Code Splitting
+- **AWS S3 for Image Storage:**
+  - **AWS S3** is used to store images in the cloud, ensuring **high availability** and fast access across the globe.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+- **TMDB API Integration:**
+  - Integrated with **TMDB API** to display popular works and provide a commenting system, enriching platform content and immersive experience.
 
-### Analyzing the Bundle Size
+## Tech Stack:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+- **Backend**: 
+  - Spring Boot
+  - Spring Security
+  - JWT
+  - MongoDB
+  - AWS S3
+  - OpenAI API (ChatGPT)
+  - Stable Diffusion (Avatar generation)
+  - Google reCAPTCHA
+  - TMDB API
+  
+- **Frontend**: 
+  - React.js
+  - Tailwind CSS
 
-### Making a Progressive Web App
+## Setup Guide:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+1. **Clone the repository**:
+   ```bash
+   git clone https://github.com/...
 
-### Advanced Configuration
+2. **Backend Setup**:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+- Install **Java 21**.
+- Navigate to the backend directory and build the Spring Boot application:
 
-### Deployment
+```
+cd backend
+mvn clean install
+mvn spring-boot:run
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+3. **MongoDB Setup**:
 
-### `npm run build` fails to minify
+- Ensure you have 
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+  MongoDB Cluster and MongoDB Compass
+
+   installed and running locally or provide connection details in the application properties:
+
+  ```
+  spring.data.mongodb.uri=mongodb://localhost:/yourdb
+  ```
+
+4. **Frontend Setup**:
+
+- Navigate to the frontend directory, install dependencies, and run the development server:
+
+  ```
+  npm install
+  npm start
+  ```
+
+5. **Environment Variables**:
+
+- Create a `.env` file in both the frontend and backend with your configuration details (e.g., **OpenAI API Key**, **AWS S3 credentials**, **MongoDB URI**, **TMDB API Key**).
+
+  **Stable Diffusion Setup**:
+
+  - Download Stable Diffusion models from **civitai** and set up the local server to generate avatars based on user input.
+
+  **Google reCAPTCHA**:
+
+  - Set up **Google reCAPTCHA** keys and integrate them into the frontend to prevent bot submissions.
+
+  **AWS S3 Setup**:
+
+  - Configure **AWS S3** for image storage and set up environment variables for access in both frontend and backend.
+
+  **TMDB API Integration**:
+
+  - Obtain your **TMDB API Key** and configure it in the environment file to enable movie search and display features.
+
+## Additional Features:
+
+- **Interactive Character Profiles**: Characters with randomized attributes interact with users, creating a personalized virtual experience.
+- **Room Booking Management**: Users can book rooms and manage bookings seamlessly via an intuitive interface.
+- **Movie Commenting System**: Users can comment on popular movies, adding a community interaction element to the platform.
